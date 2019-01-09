@@ -1,0 +1,34 @@
+<div class="my-content">
+  <mat-toolbar>
+    <mat-form-field class="search-filter">
+      <input matInput placeholder="Filter Characters..." [(ngModel)]="characterFilter">
+    </mat-form-field>
+  </mat-toolbar>
+
+  <mat-list-item>
+    <button color="accent" mat-raised-button (click)="toggleDetails()">
+      <span>{{hideDetails ? 'Show' : 'Hide'}} Details</span>
+    </button>
+
+  </mat-list-item>
+
+  <div>
+    {{characterFilter}}
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngIf="characterArray.length < 1">
+      <p>No Characters To Display</p>
+    </mat-list-item>
+    <mat-list-item *ngFor="let character of characterArray | character:characterFilter" (click)="goToCharacter(character.id)">
+      <img mat-list-avatar [src]="character.avatar" [alt]="character.name | lowercase"/>
+      <h3 mat-line>{{character.name}}</h3>
+      <div mat-line *ngIf="!hideDetails">
+        <span mat-line>Gender: {{character.gender}}</span>
+        <span mat-line>Birth Year: {{character.birth_year}}</span>
+        <dr-force (onForceChange)="updateForce(character, $event)" [forceStrength]="character.force"></dr-force>
+      </div>
+
+    </mat-list-item>
+  </mat-list>
+</div>
