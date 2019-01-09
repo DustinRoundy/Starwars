@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCedNvzEBY_A9eyX2kskZQKRk5_wCq9fvI",
+    authDomain: "starwars-characters-2a2cc.firebaseapp.com",
+    databaseURL: "https://starwars-characters-2a2cc.firebaseio.com",
+    projectId: "starwars-characters-2a2cc",
+    storageBucket: "starwars-characters-2a2cc.appspot.com",
+    messagingSenderId: "1020926917098"
+
+  }
 };
 
 /*
