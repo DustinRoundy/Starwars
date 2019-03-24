@@ -37,7 +37,12 @@ export class SignUpComponent implements OnInit {
   }
 
   signInWithGoogle() {
-    this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(user => {
+      console.log(user);
+      if (user) {
+        this.router.navigate(['/characters'])
+      }
+    });
   }
 
 }
